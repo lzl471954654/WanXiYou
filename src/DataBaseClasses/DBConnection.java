@@ -1,8 +1,11 @@
 package DataBaseClasses;
 
+import net.sf.json.JSONObject;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -10,7 +13,8 @@ import java.util.Properties;
  */
 public class DBConnection {
     private static String DB_Driver = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost:3306/javatest";
+    private static String url = "jdbc:mysql://127.0.0.1:3306/wanxiyou";
+    //private static String url = "jdbc:mysql://139.199.20.248:33060/wanxiyou&autoReconnect=true&failOverReadOnly=false  ";
     private static String user = "root";
     private static String password = "lzl471954654";
     private static Connection connection = null;
@@ -22,6 +26,8 @@ public class DBConnection {
             Class.forName(DB_Driver);
             System.out.println("JDBC驱动加载成功！");
             connection = DriverManager.getConnection(url,user,password);
+            Statement statement = connection.createStatement();
+
         }catch (ClassNotFoundException e)
         {
             e.printStackTrace();

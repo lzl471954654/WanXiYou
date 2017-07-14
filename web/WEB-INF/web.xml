@@ -18,6 +18,30 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GetScretImage</servlet-name>
-        <url-pattern>/WanXiyou/GetScretImage</url-pattern>
+        <url-pattern>/GetScretImage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AllUser</servlet-name>
+        <servlet-class>RunModule.GetAllUserInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllUser</servlet-name>
+        <url-pattern>/run/AllUser</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetUserRunList</servlet-name>
+        <servlet-class>RunModule.GetUserRunList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUserRunList</servlet-name>
+        <url-pattern>/run/GetUserRunList</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddRunInfo</servlet-name>
+        <servlet-class>RunModule.AddRunInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddRunInfo</servlet-name>
+        <url-pattern>/run/addRunInfo</url-pattern>
     </servlet-mapping>
 </web-app>

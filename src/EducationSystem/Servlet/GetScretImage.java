@@ -31,7 +31,13 @@ public class GetScretImage extends HttpServlet {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                String cookies = response.headers().get("Set-Cookie");
+                cookies = cookies.substring(0,cookies.length()-6);
+                System.out.println("cookies:"+cookies);
+                //resp.setHeader("Set-Cookie",cookies);
                 resp.getOutputStream().write(response.body().bytes());
+                resp.addHeader("Set-Cookie",cookies);
+                resp.setContentType("image/gif");
             }
         });
     }

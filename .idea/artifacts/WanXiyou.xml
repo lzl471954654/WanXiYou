@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WanXiyou">
+    <output-path>$PROJECT_DIR$/out/artifacts/WanXiyou</output-path>
+    <root id="archive" name="WanXiyou.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WanXiYou" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/libs/okio-1.6.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/okhttp-3.6.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/ezmorph-1.0.3.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/commons-logging.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/commons-lang-2.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/json-lib-2.1-jdk15.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/commons-beanutils-1.7.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/commons-collections-3.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/mysql-connector-java-5.1.42-bin.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="WanXiYou/web/Web" />
+    </root>
+  </artifact>
+</component>
