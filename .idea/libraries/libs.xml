@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/okio-1.13.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/okhttp-3.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mysql-connector-java-5.1.42-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jsoup-1.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/json-lib-2.1-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/ezmorph-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-logging.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-lang-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-collections-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-beanutils-1.7.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/libs" recursive="false" />
+  </library>
+</component>

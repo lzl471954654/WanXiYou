@@ -13,8 +13,8 @@ import java.util.Properties;
  */
 public class DBConnection {
     private static String DB_Driver = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://127.0.0.1:3306/wanxiyou";
-    //private static String url = "jdbc:mysql://139.199.20.248:33060/wanxiyou&autoReconnect=true&failOverReadOnly=false  ";
+    //private static String url = "jdbc:mysql://127.0.0.1:3306/wanxiyou";
+    private static String url = "jdbc:mysql://139.199.20.248:3306/wanxiyou";
     private static String user = "root";
     private static String password = "lzl471954654";
     private static Connection connection = null;

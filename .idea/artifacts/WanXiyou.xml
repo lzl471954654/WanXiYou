@@ -7,8 +7,6 @@
           <element id="module-output" name="WanXiYou" />
         </element>
         <element id="directory" name="lib">
-          <element id="file-copy" path="$PROJECT_DIR$/libs/okio-1.6.0.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/okhttp-3.6.0.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/libs/ezmorph-1.0.3.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/libs/commons-logging.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/libs/commons-lang-2.5.jar" />
@@ -16,6 +14,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/libs/commons-beanutils-1.7.0.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/libs/commons-collections-3.1.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/libs/mysql-connector-java-5.1.42-bin.jar" />
+          <element id="library" level="project" name="libs" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="WanXiYou/web/Web" />

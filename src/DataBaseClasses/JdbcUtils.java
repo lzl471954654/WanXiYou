@@ -40,6 +40,9 @@ public class JdbcUtils {
         {
             e.printStackTrace();
         }
+        finally {
+            releaseResource();
+        }
         return s;
     }
 
@@ -53,6 +56,9 @@ public class JdbcUtils {
         catch (SQLException e)
         {
             e.printStackTrace();
+        }
+        finally {
+            releaseResource();
         }
         return s;
     }
@@ -70,6 +76,9 @@ public class JdbcUtils {
         {
             e.printStackTrace();
         }
+        finally {
+            releaseResource();
+        }
         return resultSet;
     }
 
@@ -79,6 +88,8 @@ public class JdbcUtils {
         {
             if(statement!=null)
                 statement.close();
+            DBConnection.closeConnection();
+            connection = null;
         }
         catch (SQLException e)
         {

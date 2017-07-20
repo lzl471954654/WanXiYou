@@ -44,4 +44,13 @@
         <servlet-name>AddRunInfo</servlet-name>
         <url-pattern>/run/addRunInfo</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EduLogin</servlet-name>
+        <servlet-class>EducationSystem.Servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EduLogin</servlet-name>
+        <url-pattern>/edu/login</url-pattern>
+    </servlet-mapping>
 </web-app>
