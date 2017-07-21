@@ -15,11 +15,14 @@
     <servlet>
         <servlet-name>GetScretImage</servlet-name>
         <servlet-class>EducationSystem.Servlet.GetScretImage</servlet-class>
+        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetScretImage</servlet-name>
         <url-pattern>/GetScretImage</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>AllUser</servlet-name>
         <servlet-class>RunModule.GetAllUserInfo</servlet-class>
