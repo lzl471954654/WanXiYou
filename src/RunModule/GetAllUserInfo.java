@@ -48,5 +48,6 @@ public class GetAllUserInfo extends HttpServlet {
         String s = jsonObject.toString();
         resp.setContentType("text/html;charset=UTF-8");
         resp.getWriter().write(s);
+        utils.releaseResource();
     }
 }

@@ -44,5 +44,6 @@ public class GetUserRunList extends HttpServlet {
         String s = JSONObject.fromObject(runDataResponseData).toString();
         resp.setContentType("text/html;charset=UTF8");
         resp.getWriter().write(s);
+        jdbcUtils.releaseResource();
     }
 }

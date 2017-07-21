@@ -53,4 +53,13 @@
         <servlet-name>EduLogin</servlet-name>
         <url-pattern>/edu/login</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>EducationSystem.Servlet.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
 </web-app>

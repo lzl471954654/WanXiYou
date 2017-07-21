@@ -5,13 +5,9 @@ import java.util.Map;
 public class Student {
     String id;
     String name;
+    String cookie;
     Map<String,String> user_info;
 
-    public Student(String id, String name, Map<String, String> user_info) {
-        this.id = id;
-        this.name = name;
-        this.user_info = user_info;
-    }
 
     public String getId() {
         return id;
@@ -35,5 +31,21 @@ public class Student {
 
     public void setUser_info(Map<String, String> user_info) {
         this.user_info = user_info;
+    }
+
+    public Student(String id, String name, String cookie, Map<String, String> user_info) {
+        this.id = id;
+        this.name = name;
+        this.cookie = cookie;
+        this.user_info = user_info;
+    }
+
+    public String getCookie() {
+
+        return cookie;
+    }
+
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
     }
 }

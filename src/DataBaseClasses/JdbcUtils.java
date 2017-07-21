@@ -9,8 +9,8 @@ import java.sql.Statement;
  * Created by LZL on 2017/7/14.
  */
 public class JdbcUtils {
-    Connection connection;
-    Statement statement;
+    Connection connection = null;
+    Statement statement = null;
     public JdbcUtils()
     {
         init();
@@ -34,14 +34,12 @@ public class JdbcUtils {
         boolean s = false;
         try
         {
+            if(connection!=null&&statement!=null)
             s = statement.execute(sql);
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-        }
-        finally {
-            releaseResource();
         }
         return s;
     }
@@ -51,14 +49,12 @@ public class JdbcUtils {
         long s = -1;
         try
         {
+            if(connection!=null&&statement!=null)
             s= statement.executeLargeUpdate(sql);
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-        }
-        finally {
-            releaseResource();
         }
         return s;
     }
@@ -70,14 +66,12 @@ public class JdbcUtils {
             init();
         try
         {
+            if(connection!=null&&statement!=null)
             resultSet = statement.executeQuery(sql);
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-        }
-        finally {
-            releaseResource();
         }
         return resultSet;
     }
@@ -90,6 +84,7 @@ public class JdbcUtils {
                 statement.close();
             DBConnection.closeConnection();
             connection = null;
+            statement = null;
         }
         catch (SQLException e)
         {

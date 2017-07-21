@@ -63,6 +63,7 @@ public class AddRunInfo extends HttpServlet {
         {
             e.printStackTrace();
         }
+        utils.releaseResource();
     }
     void sendSuccess(HttpServletResponse response,String s)throws IOException
     {
