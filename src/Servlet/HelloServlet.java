@@ -28,10 +28,11 @@ public class HelloServlet extends HttpServlet {
 
     public String getDBData()
     {
+        DBConnection dbConnection = new DBConnection();
         StringBuilder builder = new StringBuilder();
         try
         {
-            Connection connection = DBConnection.getConnection();
+            Connection connection = dbConnection.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * from student");
 
@@ -39,6 +40,7 @@ public class HelloServlet extends HttpServlet {
             {
                 builder.append("id:"+resultSet.getString(1)+"\tname:"+resultSet.getString(2)+"\tage:"+resultSet.getString(3)+"\n");
             }
+            resultSet.close();
         }catch (SQLException e)
         {
             e.printStackTrace();

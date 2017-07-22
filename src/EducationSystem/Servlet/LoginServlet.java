@@ -160,7 +160,7 @@ public class LoginServlet extends HttpServlet {
             {
                 sql = "insert into user values('"+id+"','"+password+"','"+name1+"')";
                 long count = utils.update(sql);
-                if(count==0)
+                if(count!=-1)
                     System.out.println("添加用户数据失败！");
                 else
                     System.out.println("添加用户成功！\t name = "+name1 +"id = "+id);
@@ -168,13 +168,15 @@ public class LoginServlet extends HttpServlet {
             else
             {
                 System.out.println("用户已存在。");
-                sql = "update user set password='"+password+"' where id='"+id+"')";
+                sql = "update user set password='"+password+"' where id='"+id+"'";
                 long count = utils.update(sql);
-                if(count>0)
+                if(count==1)
                     System.out.println("用户信息更新成功！");
                 else
                     System.out.println("用户信息更新失败！");
             }
+            if(set!=null)
+                set.close();
             utils.releaseResource();
         }catch (SQLException e)
         {
@@ -182,7 +184,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    synchronized public void respErrorMessage(HttpServletResponse response,String msg)
+    public void respErrorMessage(HttpServletResponse response,String msg)
     {
         System.out.println("send ERROR"+"Thread:"+Thread.currentThread().getId());
         ResponseError error = new ResponseError(0,msg);

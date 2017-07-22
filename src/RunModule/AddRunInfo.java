@@ -58,6 +58,8 @@ public class AddRunInfo extends HttpServlet {
             {
                 sendError(resp,"更新失败！");
             }
+            if(resultSet!=null)
+                resultSet.close();
         }
         catch (SQLException e)
         {

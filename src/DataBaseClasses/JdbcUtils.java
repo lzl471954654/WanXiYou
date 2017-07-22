@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class JdbcUtils {
     Connection connection = null;
     Statement statement = null;
+    DBConnection dbConnection = new DBConnection();
     public JdbcUtils()
     {
         init();
@@ -19,7 +20,7 @@ public class JdbcUtils {
     {
         try
         {
-            connection = DBConnection.getConnection();
+            connection = dbConnection.getConnection();
             statement = connection.createStatement();
         }
         catch (SQLException e)
@@ -34,8 +35,17 @@ public class JdbcUtils {
         boolean s = false;
         try
         {
-            if(connection!=null&&statement!=null)
+            if(connection!=null&&statement!=null&&!statement.isClosed()&&!connection.isClosed())
             s = statement.execute(sql);
+            else
+            {
+                releaseResource();
+                init();
+                if(connection!=null&&statement!=null)
+                    s= statement.execute(sql);
+                else
+                    System.out.println("SQL Exception execute Error ,can not init!");
+            }
         }
         catch (SQLException e)
         {
@@ -49,8 +59,17 @@ public class JdbcUtils {
         long s = -1;
         try
         {
-            if(connection!=null&&statement!=null)
-            s= statement.executeLargeUpdate(sql);
+            if(connection!=null&&statement!=null&&!statement.isClosed()&&!connection.isClosed())
+                s= statement.executeLargeUpdate(sql);
+            else
+            {
+                releaseResource();
+                init();
+                if(connection!=null&&statement!=null)
+                    s= statement.executeLargeUpdate(sql);
+                else
+                    System.out.println("SQL Exception update Error ,can not init!");
+            }
         }
         catch (SQLException e)
         {
@@ -66,8 +85,17 @@ public class JdbcUtils {
             init();
         try
         {
-            if(connection!=null&&statement!=null)
-            resultSet = statement.executeQuery(sql);
+            if(connection!=null&&statement!=null&&!statement.isClosed()&&!connection.isClosed())
+                resultSet = statement.executeQuery(sql);
+            else
+            {
+                releaseResource();
+                init();
+                if(connection!=null&&statement!=null)
+                    resultSet = statement.executeQuery(sql);
+                else
+                    System.out.println("SQL Exception Query Error ,can not init!");
+            }
         }
         catch (SQLException e)
         {
@@ -82,7 +110,7 @@ public class JdbcUtils {
         {
             if(statement!=null)
                 statement.close();
-            DBConnection.closeConnection();
+            dbConnection.closeConnection();
             connection = null;
             statement = null;
         }

@@ -34,6 +34,7 @@ public class GetAllUserInfo extends HttpServlet {
                 list.add(user);
                 System.out.println(user.toString());
             }
+            resultSet.close();
         }catch (SQLException e)
         {
             e.printStackTrace();

@@ -32,6 +32,8 @@ public class GetUserRunList extends HttpServlet {
                 RunData runData = new RunData(resultSet.getString("id"),resultSet.getString("name"),resultSet.getDate("date_data"),resultSet.getInt("duration_min"),resultSet.getInt("distance"));
                 list.add(runData);
             }
+            if(resultSet!=null)
+                resultSet.close();
         }catch (SQLException e)
         {
             e.printStackTrace();

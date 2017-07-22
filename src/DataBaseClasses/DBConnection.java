@@ -12,67 +12,79 @@ import java.util.Properties;
  * Created by LZL on 2017/7/13.
  */
 public class DBConnection {
-    private static String DB_Driver = "com.mysql.jdbc.Driver";
+    private  static String DB_Driver = "com.mysql.jdbc.Driver";
     private static String url = "jdbc:mysql://127.0.0.1:3306/wanxiyou";
-    //private static String url = "jdbc:mysql://139.199.20.248:3306/wanxiyou";
+    //private String url = "jdbc:mysql://139.199.20.248:3306/wanxiyou";
     private static String user = "root";
     private static String password = "lzl471954654";
-    private static Connection connection = null;
-    private static int reTryCount = 10;
+    private  Connection connection = null;
 
-    public static void initConnection()
+    static
     {
         try
         {
             Class.forName(DB_Driver);
             System.out.println("JDBC驱动加载成功！");
-            connection = DriverManager.getConnection(url,user,password);
-            if(connection!=null)
-                reTryCount = 10;
-            else
-            {
-                while(reTryCount!=0&&connection!=null)
-                    reConnected();
-            }
-
         }catch (ClassNotFoundException e)
         {
             e.printStackTrace();
-            System.out.println("对不起，JDBC驱动加载失败！");
+            System.out.println("JDBC驱动加载失败！");
         }
-        catch (SQLException e)
+    }
+
+
+    public void initConnection()
+    {
+        try
+        {
+            connection = DriverManager.getConnection(url,user,password);
+            if(connection==null)
+                reConnected();
+            if(connection!=null)
+                System.out.println("数据库连接成功！");
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
             System.out.println("initConnection SQL ERROR!");
         }
     }
 
-    public static void reConnected()
+    public void reConnected()
     {
        try {
+           System.out.println("重新连接数据库中");
            connection = DriverManager.getConnection(url,user,password);
        }catch (SQLException e)
        {
            e.printStackTrace();
-           System.out.println("重新连接数据库中！");
+           System.out.println("重新连接数据库出现异常！！");
        }
     }
-    public static Connection getConnection()
+    public Connection getConnection()
     {
-        if(connection==null)
-            initConnection();
+        try {
+            if(connection==null)
+                initConnection();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return connection;
     }
-    public static void closeConnection()
+    public void closeConnection()
     {
         try
         {
-            if(connection!=null)
+            if(connection==null)
                 connection.close();
+            connection = null;
+            System.out.println("关闭数据库连接成功！");
         }catch (SQLException e)
         {
             e.printStackTrace();
             System.out.println("关闭数据库连接失败！");
+            connection = null;
         }
     }
 }

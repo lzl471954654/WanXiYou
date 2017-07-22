@@ -65,4 +65,14 @@
         <servlet-name>Test</servlet-name>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getScoresList</servlet-name>
+        <servlet-class>EducationSystem.Servlet.GetScoresList</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getScoresList</servlet-name>
+        <url-pattern>/edu/getScoresList</url-pattern>
+    </servlet-mapping>
 </web-app>
