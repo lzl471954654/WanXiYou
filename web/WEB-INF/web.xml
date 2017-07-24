@@ -75,4 +75,24 @@
         <servlet-name>getScoresList</servlet-name>
         <url-pattern>/edu/getScoresList</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getLessonList</servlet-name>
+        <servlet-class>EducationSystem.Servlet.GetLesson</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getLessonList</servlet-name>
+        <url-pattern>/edu/getLessonList</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>getScoreStatistics</servlet-name>
+        <servlet-class>EducationSystem.Servlet.GetScoreStatistics</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getScoreStatistics</servlet-name>
+        <url-pattern>/edu/getScoresStatistics</url-pattern>
+    </servlet-mapping>
 </web-app>

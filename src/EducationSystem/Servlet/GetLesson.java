@@ -57,8 +57,14 @@ class AsyncTaskForGetLesson extends Thread
             e.printStackTrace();
             resp = (HttpServletResponse)context.getResponse();
             resp.addHeader("result","0");
-            ErrorUtils.respErrorMessage(resp,"请求远端数据出错");
-
+            ErrorUtils.respErrorMessage(resp,"请求远端数据出错IO Exception");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            resp = (HttpServletResponse)context.getResponse();
+            resp.addHeader("result","0");
+            ErrorUtils.respErrorMessage(resp,"请求远端数据出错Another Exception");
         }
         finally {
             context.complete();
@@ -99,7 +105,7 @@ class AsyncTaskForGetLesson extends Thread
         }
         String data = response.body().string();
         List<List<Map<String,String>>> lessonList = ParseDataFromHtml.getLessonsTable(data);
-        lessonList = ParseDataFromHtml.newLessonsTable(lessonList);
+        //lessonList = ParseDataFromHtml.newLessonsTable(lessonList);
         if(device.equals("Android"))
         {
             resp.addHeader("result","1");

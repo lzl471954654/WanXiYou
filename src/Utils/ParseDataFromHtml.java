@@ -115,7 +115,8 @@ public class ParseDataFromHtml {
         {
             System.out.println(lessonlist.get(i));
         }
-        return newLessonsTable(lessonlist);
+        //return newLessonsTable(lessonlist);
+        return lessonlist;
     }
 
     public static String getName(String src)    // 登录后获取姓名
@@ -187,5 +188,20 @@ public class ParseDataFromHtml {
                 break;
         }
         return list;
+    }
+
+    public static List<List<String>> getScoreStatistics(String src)
+    {
+        List<List<String>> lists = new LinkedList<>();
+        Document document = Jsoup.parse(src);
+        Elements elements = document.select("table#Datagrid2.datelist > tbody > tr");
+        for(int i = 0;i<elements.size();i++)
+        {
+            List<String> list = new LinkedList<>();
+            for(int j = 0;j<elements.get(i).children().size();j++)
+                list.add(elements.get(i).children().get(j).text());
+            lists.add(list);
+        }
+        return lists;
     }
 }

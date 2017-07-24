@@ -2,14 +2,11 @@ package JavaBean;
 
 import java.io.Serializable;
 
-/**
- * Created by LZL on 2017/7/14.
- */
-public class ResponseData<T> implements Serializable {
+public class ResponseSingleData<T> implements Serializable {
     int code;
-    T[] data;
+    T data;
 
-    public ResponseData(int code, T[] data) {
+    public ResponseSingleData(int code, T data) {
         this.code = code;
         this.data = data;
     }
@@ -22,11 +19,11 @@ public class ResponseData<T> implements Serializable {
         this.code = code;
     }
 
-    public T[] getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(T[] data) {
+    public void setData(T data) {
         this.data = data;
     }
 }
