@@ -2,6 +2,7 @@ package Utils;
 
 import JavaBean.ResponseError;
 import net.sf.json.JSONObject;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class ErrorUtils {
         {
             PrintWriter writer = response.getWriter();
             writer.println(builder.toString());
+            System.out.println(builder.toString());
             builder.delete(0, builder.length());
         }catch (IOException e)
         {

@@ -95,4 +95,14 @@
         <servlet-name>getScoreStatistics</servlet-name>
         <url-pattern>/edu/getScoresStatistics</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>getStudyPlan</servlet-name>
+        <servlet-class>EducationSystem.Servlet.GetStudyPlan</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getStudyPlan</servlet-name>
+        <url-pattern>/edu/getStudyPlan</url-pattern>
+    </servlet-mapping>
 </web-app>

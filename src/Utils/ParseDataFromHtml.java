@@ -204,4 +204,23 @@ public class ParseDataFromHtml {
         }
         return lists;
     }
+
+    public static List<Map<String,String>> getStudyPlan(String src)
+    {
+        List<Map<String,String>> list = new LinkedList<>();
+        Document document = Jsoup.parse(src);
+        Elements element = document.select("table#DBGrid.datelist > tbody > tr > td");
+        for (int i = 16; i < element.size(); i+=16) {
+            Map<String,String> map = new LinkedHashMap<>();
+            map.put("课程名称",element.get(i+1).text());
+            map.put("课程代码",element.get(i).text());
+            map.put("学分",element.get(i+2).text());
+            map.put("周学时",element.get(i+3).text());
+            map.put("考核方式",element.get(i+4).text());
+            map.put("课程性质",element.get(i+5).text());
+            map.put("起始结束周",element.get(i+14).text());
+            list.add(map);
+        }
+        return list;
+    }
 }
