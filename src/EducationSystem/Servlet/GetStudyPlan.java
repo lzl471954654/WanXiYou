@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -88,12 +89,12 @@ class AsyncTaskForGetStudyPlan extends Thread
                 .get()
                 .url("http://222.24.62.120/pyjh.aspx?xh="+xh+"&xm="+name+"&gnmkdm=N121607")
                 .addHeader("Cookie",cookie)
-                .header("Accept-Encoding", "gzip,deflate")
-                .header("Accept-Language","zh-Hans-CN,zh-Hans;q=0.5")
-                .header("Accept","text/html, application/xhtml+xml, image/jxr, */*")
-                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")
-                .header("Pragma","no-cache")
-                .header("Referer","http://222.24.62.120/")
+                .addHeader("Accept-Encoding", "gzip,deflate")
+                .addHeader("Accept-Language","zh-Hans-CN,zh-Hans;q=0.5")
+                .addHeader("Accept","text/html, application/xhtml+xml, image/jxr, */*")
+                .addHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")
+                .addHeader("Pragma","no-cache")
+                .addHeader("Referer","http://222.24.62.120/")
                 .build();
         Call call = okHttpClient.newCall(request);
         Response response = call.execute();
@@ -118,21 +119,20 @@ class AsyncTaskForGetStudyPlan extends Thread
                     .add("__EVENTTARGET","xq")
                     .add("__EVENTARGUMENT","")
                     .add("__VIEWSTATE",viewstate)
-                    .add("xq","3")
+                    .add("xq",String.valueOf(i))
                     .add("kcxz","%C8%AB%B2%BF")
-                    .add("dpDBGrid:txtChoosePage",String.valueOf(i))
+                    .add("dpDBGrid:txtChoosePage","1")
                     .add("dpDBGrid:txtPageSize","20")
                     .build();
             request = new Request.Builder()
                     .post(formBody)
                     .url("http://222.24.62.120/pyjh.aspx?xh="+xh+"&xm="+name+"&gnmkdm=N121607")
                     .addHeader("Cookie",cookie)
-                    .header("Accept-Encoding", "gzip,deflate")
-                    .header("Accept-Language","zh-Hans-CN,zh-Hans;q=0.5")
-                    .header("Accept","text/html, application/xhtml+xml, image/jxr, */*")
-                    .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")
-                    .header("Pragma","no-cache")
-                    .header("Referer","http://222.24.62.120/")
+                    .addHeader("Accept-Encoding", "gzip,deflate")
+                    .addHeader("Accept-Language","zh-Hans-CN,zh-Hans;q=0.5")
+                    .addHeader("Accept","text/html, application/xhtml+xml, image/jxr, */*")
+                    .addHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")
+                    .addHeader("Referer","http://222.24.62.120/pyjh.aspx?xh="+xh+"&xm="+ URLEncoder.encode(name,"GBK")+"&gnmkdm=N121607")
                     .build();
             call = okHttpClient.newCall(request);
             response = call.execute();
