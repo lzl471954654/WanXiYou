@@ -4,6 +4,7 @@ import JavaBean.ResponseData;
 import JavaBean.ResponseSingleData;
 import Utils.ErrorUtils;
 import Utils.ParseDataFromHtml;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import okhttp3.*;
 import org.jsoup.Jsoup;

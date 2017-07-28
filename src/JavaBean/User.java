@@ -1,5 +1,7 @@
 package JavaBean;
 
+import java.io.ObjectInputStream;
+
 /**
  * Created by LZL on 2017/7/14.
  */

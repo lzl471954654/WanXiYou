@@ -1,5 +1,6 @@
 package EducationSystem.Servlet;
 
+import JavaBean.ResponseSingleData;
 import Utils.ErrorUtils;
 import Utils.ParseDataFromHtml;
 import net.sf.json.JSONObject;
@@ -10,6 +11,7 @@ import okhttp3.Response;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Map;
+
 
 public class GetLesson extends HttpServlet {
 
@@ -104,7 +107,7 @@ class AsyncTaskForGetLesson extends Thread
             return;
         }
         String data = response.body().string();
-        List<List<Map<String,String>>> lessonList = ParseDataFromHtml.getLessonsTable(data);
+        List<List<Map<String,String>>> lessonList = ParseDataFromHtml.getNewLessonList(data);
         //lessonList = ParseDataFromHtml.newLessonsTable(lessonList);
         if(device.equals("Android"))
         {
@@ -115,7 +118,8 @@ class AsyncTaskForGetLesson extends Thread
         else if(device.equals("iOS"))
         {
             resp.addHeader("result","1");
-            JSONObject object = JSONObject.fromObject(lessonList);
+            ResponseSingleData<List> responseSingleData = new ResponseSingleData<>(1,lessonList);
+            JSONObject object = JSONObject.fromObject(responseSingleData);
             resp.getWriter().write(object.toString());
         }
 

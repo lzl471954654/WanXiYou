@@ -34,6 +34,40 @@ public class ParseDataFromHtml {
         return mapList;
     }
 
+    public static List<List<Map<String,String>>> getNewLessonList(String src)
+    {
+        List<List<Map<String,String>>> lists = new LinkedList<>();
+        Document document = Jsoup.parse(src);
+        Elements elements = document.select("table#Table1.blacktab > tbody > tr");
+        int m = 1;
+        for(int i = 2;i<elements.size();i+=2,m++)
+        {
+            Element element = elements.get(i);
+            System.out.println(element.children().size());
+            List<Map<String,String>> list = new LinkedList<>();
+            int k = 2;
+            if(m%2==0)
+                k = 1;
+            for(int j = k;j<element.children().size();j++)
+            {
+                Map<String,String> map = new LinkedHashMap<>();
+                String lesson = elements.get(i).child(j).text();
+                if(lesson!=null&&lesson.length()!=1)
+                {
+                    map.put("empty","0");
+                    map.put("lesson",lesson);
+                    System.out.println(lesson.length());
+                }
+                else
+                    map.put("empty","1");
+
+                list.add(map);
+            }
+            lists.add(list);
+        }
+        return lists;
+    }
+
     public static Map<String,String> parseNodeData(Elements elements)
     {
         Map<String,String> map = new LinkedHashMap<>();

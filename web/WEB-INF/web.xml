@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GetScretImage</servlet-name>
-        <url-pattern>/GetScretImage</url-pattern>
+        <url-pattern>/edu/GetScretImage</url-pattern>
     </servlet-mapping>
 
 

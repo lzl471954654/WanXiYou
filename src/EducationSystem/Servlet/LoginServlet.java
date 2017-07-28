@@ -35,8 +35,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("THis is LOGIN!!"+"Thread:"+Thread.currentThread().getId());
-        String cookie = req.getParameter("Set-Cookie");
-        String username = req.getParameter("username");
+        String cookie = req.getParameter("cookie");
+        String username = req.getParameter("xh");
         String password = req.getParameter("password");
         String code = req.getParameter("code");
         resp.setContentType("text/html;charset=UTF-8");

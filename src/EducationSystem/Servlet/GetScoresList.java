@@ -1,7 +1,9 @@
 package EducationSystem.Servlet;
 
 import EducationSystem.Servlet.Bean.Student;
+import JavaBean.ResponseData;
 import JavaBean.ResponseError;
+import JavaBean.ResponseSingleData;
 import Utils.ErrorUtils;
 import Utils.ParseDataFromHtml;
 import net.sf.json.JSONObject;
@@ -15,10 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet(asyncSupported = true)
 public class GetScoresList extends HttpServlet {
@@ -36,7 +35,7 @@ public class GetScoresList extends HttpServlet {
             return;
         }
         AsyncContext context = req.startAsync();
-        context.setTimeout(15000);
+        context.setTimeout(20000);
         AsyncTaskForGetScoresList task = new AsyncTaskForGetScoresList(context,xh,name,cookie,device);
         task.start();
     }
@@ -107,6 +106,8 @@ class AsyncTaskForGetScoresList extends Thread
         }
         String query = part1+xh+part2+name+part3;
         Map<String,List<Map<String,String>>> mapXN = new LinkedHashMap<>();
+        Map<String,String> dateMap = new LinkedHashMap<>();
+        int k=0;
         for(int i = 0;i<XNList.size();i++)
         {
             for(int j = 1;j<3;j++)
@@ -144,6 +145,7 @@ class AsyncTaskForGetScoresList extends Thread
                 body = response.body().string();
                 List<Map<String,String>> scoresList = ParseDataFromHtml.getScoreList(body);
                 mapXN.put(XNList.get(i)+"-"+String.valueOf(j),scoresList);
+                dateMap.put(String.valueOf(k++),XNList.get(i)+"-"+String.valueOf(j));
             }
         }
         if(device.equals("Android"))
@@ -155,7 +157,10 @@ class AsyncTaskForGetScoresList extends Thread
         else if(device.equals("iOS"))
         {
             resp.addHeader("result","1");
-            JSONObject object = JSONObject.fromObject(mapXN);
+
+            Map[] maps = {dateMap,mapXN};
+            ResponseData<Map> data = new ResponseData<>(1,maps);
+            JSONObject object = JSONObject.fromObject(data);
             resp.getWriter().write(object.toString());
         }
         else
