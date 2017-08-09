@@ -27,6 +27,7 @@ public class GetScoreStatistics extends HttpServlet {
         String name = req.getParameter("name");
         String cookie = req.getParameter("cookie");
         String device = req.getParameter("device");
+        resp.setContentType("text/json;charset=UTF-8");
         if(xh==null||name==null||cookie==null||device==null)
         {
             resp.addHeader("result","0");
@@ -64,7 +65,6 @@ class AsyncTaskForStatistics extends Thread
         this.name = name;
         this.cookie = cookie;
         resp = (HttpServletResponse) context.getResponse();
-        resp.setContentType("text/html;charset=UTF-8");
     }
 
     @Override

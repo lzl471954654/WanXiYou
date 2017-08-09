@@ -28,7 +28,7 @@ public class GetScoresList extends HttpServlet {
         String name = req.getParameter("name");
         String cookie = req.getParameter("cookie");
         String device = req.getParameter("device");
-        resp.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/json;charset=UTF-8");
         if(xh==null||name==null||cookie==null||device==null)
         {
             ErrorUtils.respErrorMessage(resp,"Parameter is not enough");

@@ -2,7 +2,6 @@
   <library name="libs">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/okio-1.13.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/okhttp-3.8.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/mysql-connector-java-5.1.42-bin.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/jsoup-1.8.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/json-lib-2.1-jdk15.jar!/" />

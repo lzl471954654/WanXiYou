@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("xh");
         String password = req.getParameter("password");
         String code = req.getParameter("code");
-        resp.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         onLogon(username,password,cookie,code,resp);
 

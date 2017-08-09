@@ -85,7 +85,7 @@ class AsyncTaskForGetLesson extends Thread
     public void getData() throws IOException
     {
         resp = (HttpServletResponse)context.getResponse();
-        resp.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/json;charset=UTF-8");
         String url = getRequestUrl(xh,name);
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();
