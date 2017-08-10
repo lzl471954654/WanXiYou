@@ -5,6 +5,7 @@ import EducationSystem.Servlet.Bean.EduResponseData;
 import EducationSystem.Servlet.Bean.Student;
 import JavaBean.HeadersUtils;
 import JavaBean.ResponseError;
+import Utils.ErrorUtils;
 import Utils.ParseDataFromHtml;
 import com.sun.javafx.binding.StringFormatter;
 import net.sf.json.JSONObject;
@@ -41,6 +42,12 @@ public class LoginServlet extends HttpServlet {
         String code = req.getParameter("code");
         resp.setContentType("text/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
+        if(username==null||password==null||code==null||cookie==null)
+        {
+            resp.addHeader("result","0");
+            ErrorUtils.respErrorMessage(resp,"Parameter is not enough\t"+"{xh="+username+",password="+password+",cookie="+cookie+",code="+code+"}");
+            return;
+        }
         onLogon(username,password,cookie,code,resp);
 
     }
@@ -192,9 +199,7 @@ public class LoginServlet extends HttpServlet {
         //System.out.println("error :"+s);
         try
         {
-            Date date = new Date();
             PrintWriter writer = response.getWriter();
-            builder.append(date);
             writer.println(builder.toString());
             //writer.flush();
             System.out.println("error :" + builder.toString());
